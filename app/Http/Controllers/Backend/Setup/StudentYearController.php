@@ -14,7 +14,8 @@ class StudentYearController extends Controller
         $this->middleware('auth');
     }
 
-    public function StudentYearView(){
+    public function StudentYearView()
+    {
         $allData = StudentYear::all();
         return view('backend.setup.student_year.view_year', compact('allData'));
     }
@@ -51,11 +52,11 @@ class StudentYearController extends Controller
 
     public function StudentYearUpdate(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|numeric|max:3000'
-        ]);
-
         $data = StudentYear::find($id);
+
+        $validatedData = $request->validate([
+            'name' => 'required|unique:student_years,name,'.$data->id.'|numeric|max:3000'
+        ]);
 
         $data->name = $request->name;
         $data->save();

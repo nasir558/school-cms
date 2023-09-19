@@ -51,11 +51,12 @@ class StudentClassController extends Controller
 
     public function StudentClassUpdate(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|unique:student_classes,name|max:300'
-        ]);
 
         $data = StudentClass::find($id);
+
+        $validatedData = $request->validate([
+            'name' => 'required|unique:student_classes,name,'.$data->id.'|max:300'
+        ]);
 
         $data->name = $request->name;
         $data->save();
