@@ -90,6 +90,9 @@
                     <li class="{{ $route == 'feeCategory.view' ? 'active' : '' }}">
                         <a href="{{ route('feeCategory.view') }}"><i class="ti-more"></i>Fee Category</a>
                     </li>
+                    <li class="{{ $route == 'feeAmount.view' ? 'active' : '' }}">
+                        <a href="{{ route('feeAmount.view') }}"><i class="ti-more"></i>Fee Category Amount</a>
+                    </li>
                 </ul>
             </li>
 
